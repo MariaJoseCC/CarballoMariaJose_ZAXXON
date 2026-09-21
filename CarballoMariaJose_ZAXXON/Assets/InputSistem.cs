@@ -124,7 +124,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4ddb7478-e191-4bd5-97b0-bb9a5d543898"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -146,7 +146,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""746f4a80-3087-4cc1-8ca3-07e4736dc2a2"",
-                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

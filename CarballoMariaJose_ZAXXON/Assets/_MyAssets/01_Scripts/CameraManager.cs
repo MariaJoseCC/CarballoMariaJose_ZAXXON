@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CamaraMain : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
