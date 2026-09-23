@@ -525,7 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   speed: 0
-  lateralSpeed: 5
+  lateralSpeed: 15
+  rotationSpeed: 1
+  smoothTime: 0.2
 --- !u!1 &931049185
 GameObject:
   m_ObjectHideFlags: 0

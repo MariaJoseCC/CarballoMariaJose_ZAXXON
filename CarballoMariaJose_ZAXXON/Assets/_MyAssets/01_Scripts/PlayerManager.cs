@@ -15,12 +15,12 @@ public class PlayerManager : MonoBehaviour
     Vector3 currentRot;
     float maxRotationX = 40f;
     float maxRotationZ = 40f;
-   [SerializeField] float smoothTime = 0.5f;
+    [SerializeField] float smoothTime = 0.2f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     void Shoot()
@@ -39,8 +39,8 @@ public class PlayerManager : MonoBehaviour
         inputActions.Player.MoveY.canceled += ctx => moveY = 0f;
         inputActions.Player.Rotate.performed += ctx => rotation = ctx.ReadValue<float>();
         inputActions.Player.Rotate.canceled += _ => rotation = 0f;
-        
-        
+
+
 
     }
     private void OnEnable()
@@ -52,17 +52,27 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * lateralSpeed * moveX * Time.deltaTime);
-        transform.Translate(Vector3.up * lateralSpeed * moveY * Time.deltaTime);
-        transform.Rotate(Vector3.forward * rotation * rotationSpeed * Time.deltaTime * -360);
-        Vector3 vectorRotZ = Vector3. forward * maxRotationZ * moveY;
-        Vector3 vectorRotX = Vector3.right * maxRotationX * moveX;
+       MovePlayer();
+       Rotation();
+    }
+    void Rotation()
+    {
+        
+        Vector3 vectorRotZ = Vector3.forward * -maxRotationZ * moveX;
+        Vector3 vectorRotX = Vector3.right * -maxRotationX * moveY;
         Vector3 vectorRot = vectorRotX + vectorRotZ;
         currentRot = Vector3.SmoothDamp(currentRot, vectorRot, ref velocity, smoothTime);
         transform.eulerAngles = currentRot;
+
     }
-   
-      
-    
-    
+
+   void MovePlayer()
+    {
+        transform.Rotate(Vector3.forward * rotation * rotationSpeed * Time.deltaTime * -360);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * lateralSpeed * moveX * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.up * lateralSpeed * moveY * Time.deltaTime, Space.World);
+    }
+
+
 }
