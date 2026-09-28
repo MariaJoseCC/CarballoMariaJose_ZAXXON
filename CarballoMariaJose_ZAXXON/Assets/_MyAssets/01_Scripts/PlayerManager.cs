@@ -16,6 +16,8 @@ public class PlayerManager : MonoBehaviour
     float maxRotationX = 40f;
     float maxRotationZ = 40f;
     [SerializeField] float smoothTime = 0.2f;
+    float myLimitX = 15f;
+    float myLimitY = 15f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,6 +56,8 @@ public class PlayerManager : MonoBehaviour
     {
        MovePlayer();
        Rotation();
+       CheckPositionX(myLimitX);
+       CheckPositionY(myLimitY);
     }
     void Rotation()
     {
@@ -74,5 +78,47 @@ public class PlayerManager : MonoBehaviour
         transform.Translate(Vector3.up * lateralSpeed * moveY * Time.deltaTime, Space.World);
     }
 
+    bool CheckPositionX(float myLimitX)
+    {
+        bool inLimit;
+         float posX = transform.position.x;
+        if (posX > myLimitX)
+        {
+            transform.position = new Vector3(this.myLimitX, 0, 0);
+            inLimit = false;
+        }
+        else if (posX < -this.myLimitX)
+        {
+            transform.position = new Vector3(-this.myLimitX, 0, 0);
+            inLimit = false;
+        }
+        else
+        {
+            inLimit = true;
+        }
+        return inLimit;
+
+    }
+    bool CheckPositionY(float myLimitY)
+    {
+        bool inLimit;
+        float posY = transform.position.y;
+        if (posY > myLimitY)
+        {
+            transform.position = new Vector3(0, myLimitY, 0);
+            inLimit = false;
+        }
+        else if (posY < -myLimitY)
+        {
+            transform.position = new Vector3(0, -myLimitY, 0);
+            inLimit = false;
+        }
+        else
+        {
+            inLimit = true;
+        }
+        return inLimit;
+
+    }
 
 }
