@@ -56,9 +56,10 @@ public class PlayerManager : MonoBehaviour
     {
        MovePlayer();
        Rotation();
-       CheckPositionX(myLimitX);
-       CheckPositionY(myLimitY);
+
     }
+
+    //Rotación del jugador en X e Y
     void Rotation()
     {
         
@@ -70,26 +71,36 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-   void MovePlayer()
+    //Movimiento del jugador en X e Y
+    void MovePlayer()
     {
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (CheckPositionX(myLimitX) == true)
+        {
+            transform.Translate(Vector3.right * lateralSpeed * moveX * Time.deltaTime, Space.World);
+        }
+        if (CheckPositionY(myLimitY) == true)
+        {
+            transform.Translate(Vector3.up * lateralSpeed * moveY * Time.deltaTime, Space.World);
+        }
+
         transform.Rotate(Vector3.forward * rotation * rotationSpeed * Time.deltaTime * -360);
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        transform.Translate(Vector3.right * lateralSpeed * moveX * Time.deltaTime, Space.World);
-        transform.Translate(Vector3.up * lateralSpeed * moveY * Time.deltaTime, Space.World);
     }
 
+
+    //Limites del jugador en un área, X e Y
     bool CheckPositionX(float myLimitX)
     {
         bool inLimit;
          float posX = transform.position.x;
-        if (posX > myLimitX)
+        if (posX > myLimitX && moveX > 0)
         {
-            transform.position = new Vector3(this.myLimitX, 0, 0);
+            //transform.position = new Vector3(this.myLimitX, 0, 0);
             inLimit = false;
         }
-        else if (posX < -this.myLimitX)
+        else if (posX < -myLimitX && moveX < 0)
         {
-            transform.position = new Vector3(-this.myLimitX, 0, 0);
+            //transform.position = new Vector3(-this.myLimitX, 0, 0);
             inLimit = false;
         }
         else
@@ -103,14 +114,14 @@ public class PlayerManager : MonoBehaviour
     {
         bool inLimit;
         float posY = transform.position.y;
-        if (posY > myLimitY)
+        if (posY > myLimitY && moveY > 0)
         {
-            transform.position = new Vector3(0, myLimitY, 0);
+           // transform.position = new Vector3(0, myLimitY, 0);
             inLimit = false;
         }
-        else if (posY < -myLimitY)
+        else if (posY < -myLimitY && moveY < 0)
         {
-            transform.position = new Vector3(0, -myLimitY, 0);
+           // transform.position = new Vector3(0, -myLimitY, 0);
             inLimit = false;
         }
         else
