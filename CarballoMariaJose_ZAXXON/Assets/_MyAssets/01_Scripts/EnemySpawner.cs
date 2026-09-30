@@ -8,9 +8,10 @@ public class EnemySpawner : MonoBehaviour
     //Internalo de tiempo para spawnear
     [SerializeField] float interval = 0.5f;
     //Limites aleatorios de los ejes x e y
-    [SerializeField] float limitX  = 5f;
-    [SerializeField] float limitUp = 5f;
-    [SerializeField] float limitDown = 5f;
+    float limitX  = 15f;
+    float limitUp = 15f;
+    float limitDown = -15f;
+    
 
     //Distancia a la que sale el primer enemigo intermedio
     float firstEnemyDistance;
@@ -18,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     float distanceEntreEnemies;
     [SerializeField] PlayerManager playerManager;
     //Oleadas/bucles
-    [SerializeField] int waves;
+    [SerializeField] float waves;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int n = 0; n < waves; n++)
             {
-                SacarLechuza(15);
+                SacarLechuza(0);
             }
             interval = distanceEntreEnemies / playerManager.speed;
             yield return new WaitForSeconds(interval);
@@ -59,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
  
-    void SacarLechuza(float distanceZ=0)
+    void SacarLechuza(float distanceZ)
     { 
     float randomX = Random.Range(-limitX, limitX);
     float randomY = Random.Range(limitDown, limitUp);

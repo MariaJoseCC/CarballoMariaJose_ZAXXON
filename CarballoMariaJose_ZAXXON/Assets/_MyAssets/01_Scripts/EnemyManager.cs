@@ -3,8 +3,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     //la velocidad que la vamos a obtener del jugador
-    float speed;
-
+    float mySpeed;
+    [SerializeField] float playerSpeed;
     //Component5e del jugador
     [SerializeField] PlayerManager playerManager;
 
@@ -20,8 +20,12 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = playerManager.speed;
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        playerSpeed = playerManager.speed + mySpeed;
+        transform.Translate(Vector3.back * playerSpeed * Time.deltaTime);
+        if (transform.position.z < -20)
+        {
+            Destroy(gameObject);
+        }
 
     }
 }
