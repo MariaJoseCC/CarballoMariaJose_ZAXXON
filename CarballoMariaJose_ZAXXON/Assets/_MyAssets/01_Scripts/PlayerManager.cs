@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void Awake()
     {
+        speed = 20f;
 
         inputActions = new InputActions();
 
