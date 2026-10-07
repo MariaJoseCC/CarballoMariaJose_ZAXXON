@@ -24,6 +24,9 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        distanceEntreEnemies = 10f;
+        firstEnemyDistance = 15f;
+
         StartCoroutine("SpawnEnemy");
         EnemigosIntermedios();
     }

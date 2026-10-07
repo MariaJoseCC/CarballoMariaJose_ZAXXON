@@ -492,6 +492,8 @@ GameObject:
   m_Component:
   - component: {fileID: 905646257}
   - component: {fileID: 905646258}
+  - component: {fileID: 905646259}
+  - component: {fileID: 905646260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -531,6 +533,54 @@ MonoBehaviour:
   lateralSpeed: 15
   rotationSpeed: 1
   smoothTime: 0.2
+--- !u!65 &905646259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905646256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3607671, y: 1.0622191, z: 1.9540756}
+  m_Center: {x: 0, y: 0.25050712, z: 0}
+--- !u!54 &905646260
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905646256}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &931049185
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +729,7 @@ MonoBehaviour:
   - {fileID: 4557143796367467525, guid: f036021cd7735f546bc6574c408a8ce9, type: 3}
   interval: 0.5
   playerManager: {fileID: 905646258}
-  waves: 1
+  waves: 5
 --- !u!4 &1069535862
 Transform:
   m_ObjectHideFlags: 0
@@ -689,7 +739,7 @@ Transform:
   m_GameObject: {fileID: 1069535860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09647, y: 0.26915, z: 76.66}
+  m_LocalPosition: {x: 0.09647, y: 0.26915, z: 198.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
